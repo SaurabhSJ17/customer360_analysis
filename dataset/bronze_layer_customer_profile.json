@@ -1,0 +1,27 @@
+{
+	"name": "bronze_layer_customer_profile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Customer_360_anlysis_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customer_profile.csv",
+				"folderPath": {
+					"value": "@formatDateTime(utcNow(), 'yy-MM-dd')\n",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze-layer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
