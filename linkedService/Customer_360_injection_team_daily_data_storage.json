@@ -1,0 +1,10 @@
+{
+	"name": "Customer_360_injection_team_daily_data_storage",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://custanalysisdailyinjest.dfs.core.windows.net/"
+		}
+	}
+}
