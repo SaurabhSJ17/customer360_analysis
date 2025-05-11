@@ -20,7 +20,7 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "Customer_profile",
+							"wildcardFolderPath": "Customer_transaction",
 							"wildcardFileName": "*.csv",
 							"enablePartitionDiscovery": false
 						},
@@ -52,13 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "customer_profile_injection",
+						"referenceName": "customer_transaction_injection",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "bronze_layer_customer_profile",
+						"referenceName": "bronze_layer_customer_trasaction",
 						"type": "DatasetReference"
 					}
 				]
