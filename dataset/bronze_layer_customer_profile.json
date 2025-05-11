@@ -12,7 +12,7 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "customer_profile.csv",
 				"folderPath": {
-					"value": "@formatDateTime(utcNow(), 'yyyy-MM-dd')\n",
+					"value": "@formatDateTime(addDays(utcNow(),-1),'yyyy-MM-dd')",
 					"type": "Expression"
 				},
 				"fileSystem": "bronze-layer"
