@@ -1,0 +1,9 @@
+{
+	"name": "Customer-360-analysiss-df",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5593c9a8-a2f5-4050-8a43-7ac1ab5e11b1",
+		"tenantId": "abf31878-854d-45e5-aab3-7b1d9e22e181"
+	}
+}
