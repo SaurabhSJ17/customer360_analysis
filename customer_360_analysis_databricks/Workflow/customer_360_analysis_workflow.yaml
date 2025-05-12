@@ -1,0 +1,35 @@
+resources:
+  jobs:
+    Customer_360_analysis_scheduler_workflow:
+      name: Customer_360_analysis_scheduler_workflow
+      schedule:
+        quartz_cron_expression: 9 0 1 * * ?
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: customer_profile_silver_layer
+          notebook_task:
+            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/silver_layer/customer_profile_transformation
+            source: WORKSPACE
+          existing_cluster_id: 0512-032442-qg85qnt3
+        - task_key: customer_transaction_silver_layer
+          depends_on:
+            - task_key: customer_profile_silver_layer
+          notebook_task:
+            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/silver_layer/customer_transaction_transformation.
+            source: WORKSPACE
+          existing_cluster_id: 0512-032442-qg85qnt3
+        - task_key: gold_layer
+          depends_on:
+            - task_key: customer_transaction_silver_layer
+          notebook_task:
+            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/gold_layer/gold_layer_transformation
+            source: WORKSPACE
+          existing_cluster_id: 0512-032442-qg85qnt3
+        - task_key: mount
+          notebook_task:
+            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/mount
+            source: WORKSPACE
+          existing_cluster_id: 0512-032442-qg85qnt3
+      queue:
+        enabled: true
