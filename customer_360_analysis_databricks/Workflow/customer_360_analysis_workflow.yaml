@@ -7,29 +7,32 @@ resources:
         timezone_id: UTC
         pause_status: UNPAUSED
       tasks:
-        - task_key: customer_profile_silver_layer
+        - task_key: utils_and_imports
           notebook_task:
-            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/silver_layer/customer_profile_transformation
+            notebook_path: /Workspace/Users/kardiletanmay1@gmail.com/customer360_analysis/customer_360_analysis_databricks/utils
             source: WORKSPACE
-          existing_cluster_id: 0512-032442-qg85qnt3
+          existing_cluster_id: 0601-183815-xh1xx5el
+        - task_key: customer_profile_silver_layer
+          depends_on:
+            - task_key: utils_and_imports
+          notebook_task:
+            notebook_path: /Workspace/Users/kardiletanmay1@gmail.com/customer360_analysis/customer_360_analysis_databricks/silver_layer/customer_profile_transformation
+            source: WORKSPACE
+          existing_cluster_id: 0601-183815-xh1xx5el
         - task_key: customer_transaction_silver_layer
           depends_on:
-            - task_key: customer_profile_silver_layer
+            - task_key: utils_and_imports
           notebook_task:
             notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/silver_layer/customer_transaction_transformation.
             source: WORKSPACE
-          existing_cluster_id: 0512-032442-qg85qnt3
+          existing_cluster_id: 0601-183815-xh1xx5el
         - task_key: gold_layer
           depends_on:
             - task_key: customer_transaction_silver_layer
+            - task_key: customer_profile_silver_layer
           notebook_task:
-            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/gold_layer/gold_layer_transformation
+            notebook_path: /Workspace/Users/kardiletanmay1@gmail.com/customer360_analysis/customer_360_analysis_databricks/gold_layer/gold_layer_transformation
             source: WORKSPACE
-          existing_cluster_id: 0512-032442-qg85qnt3
-        - task_key: mount
-          notebook_task:
-            notebook_path: /Workspace/Users/saurabhjadhao85@gmail.com/customer360_analysis/customer_360_analysis_databricks/mount
-            source: WORKSPACE
-          existing_cluster_id: 0512-032442-qg85qnt3
+          existing_cluster_id: 0601-183815-xh1xx5el
       queue:
         enabled: true
