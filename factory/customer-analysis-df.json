@@ -1,0 +1,9 @@
+{
+	"name": "customer-analysis-df",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "579df9b4-74bf-4021-84d8-c25a4a8ac283",
+		"tenantId": "14e9841a-89c1-4e49-a26b-2288de694936"
+	}
+}
